@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Burger from '../../components/Burger/Burger'
-import Aux from '../../hoc/Auxi/Aux'
+import Auxi from '../../hoc/Auxi/Auxi'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
@@ -115,7 +115,7 @@ class BurgerBuilder extends Component{
         let burger = this.state.error ? <p>Ingredients can't be loaded</p> : <Spinner/>
         if(this.state.ingredients){
             burger = (
-                <Aux>
+                <Auxi>
                     <Burger ingredients = {this.state.ingredients}/>
                         <BuildControls
                             ingredientAdded = {this.addIngredientHandler}
@@ -125,7 +125,7 @@ class BurgerBuilder extends Component{
                             purchasable = {this.state.purchasable}
                             ordered={this.purchaseEventHandler}
                         />
-                </Aux>
+                </Auxi>
             )
             orderSummary = 
             <OrderSummary 
@@ -140,7 +140,7 @@ class BurgerBuilder extends Component{
         }
 
         return(
-            <Aux>
+            <Auxi>
                 <Modal 
                     show={this.state.purchasing}
                     modaled={this.purchaseCancelHandler}
@@ -148,7 +148,7 @@ class BurgerBuilder extends Component{
                     {orderSummary}
                 </Modal>
                 {burger}
-            </Aux>
+            </Auxi>
         )
     }
 }
